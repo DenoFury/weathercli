@@ -17,7 +17,7 @@ A command-line tool that fetches real-time weather data for any city and logs ea
 
 ## Installation
 ```bash
-git clone https://github.com/DenoFury/weather-dashboard-cli.git
+git clone https://github.com/DenoFury/weathercli
 cd weather-dashboard-cli
 pip install -r requirements.txt
 ```
