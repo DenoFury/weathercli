@@ -29,3 +29,15 @@ python weather.py
 Enter a city name when prompted. The current weather will be displayed in the terminal and appended to `weather_history.csv`.
 
 ## Example Output
+Enter city: Malaga
+Weather in Malaga: 27°C, Clear sky
+Logged to weather_history.csv
+
+
+## Future Improvements
+- Support checking multiple cities in a single run
+- Add more weather details (humidity, wind speed, forecast)
+- Visualize logged history with a simple chart
+
+## Lessons Learned
+First project combining an external API, JSON parsing, and CSV persistence in one script. Learned to handle two-step API calls (geocoding a city name into coordinates before fetching weather data) and to build in error handling for invalid input and failed requests.
