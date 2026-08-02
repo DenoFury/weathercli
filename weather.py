@@ -1,4 +1,7 @@
 import requests
+import csv
+import os
+
 city = input("Which city do you live in? ")
 
 r = requests.get(f'https://geocoding-api.open-meteo.com/v1/search?name={city}&count=1&language=en&format=json')
@@ -62,6 +65,18 @@ wmo = {
   96: "Thunderstorm with hail",
   99: "Thunderstorm with heavy hail"
 }
+csv_name = "weatherLog.csv"
+if not os.path.exists(csv_name):
+  with open(csv_name, "a", newline="") as log:
+    writer = csv.DictWriter(log, fieldnames=["city","day", "max", "min", "weather"])
+    writer.writeheader()
+
 
 for days in temperatures.keys():
   print(f"Day {days}: Max: {max(temperatures.get(days)[0])} ºC, Min: {min(temperatures.get(days)[0])} ºC. Weather code: {wmo.get(most_common(temperatures.get(days)[1]))}")
+  with open(csv_name, "a", newline="") as log:
+    writer = csv.DictWriter(log, fieldnames=["city","day", "max", "min", "weather"])
+    writer.writerow({"city": city, "day" : days, "max" : max(temperatures.get(days)[0]), "min": min(temperatures.get(days)[0]), "weather": wmo.get(most_common(temperatures.get(days)[1]))})
+
+
+
